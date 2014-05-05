@@ -28,7 +28,7 @@ class admin extends controller{
     public function show_users(){
         $this->template->set_var('title','show users');
         $this->template->set_var('menu',view::get_content('vertical_menu.php'));
-        $users = users::find_all();        
+        $users = model_users::find_all();        
         $this->template->set_var('content',view::get_content('admin/show_users.php',array('users'=>$users)));
         $this->template->forge();
     }
@@ -36,7 +36,7 @@ class admin extends controller{
     public function modify_user(){
         $this->template->set_var('title','modify user');
         $this->template->set_var('menu',view::get_content('vertical_menu.php'));
-        $user = users::find_by_pk($_GET['id_user']);        
+        $user = model_users::find_by_pk($_GET['id_user']);        
         $this->template->set_var('content',view::get_content('admin/modify_user.php',array('user'=>$user)));
         $this->template->forge();
     }
@@ -44,7 +44,7 @@ class admin extends controller{
     public function add_user(){
         $this->template->set_var('title','modify user');
         $this->template->set_var('menu',view::get_content('vertical_menu.php'));
-        $user = new users();  
+        $user = new model_users();  
         $user->id_user = '';
         $user->use_name = '';
         $user->use_surname = '';
@@ -61,7 +61,7 @@ class admin extends controller{
     
     public function delete_user(){
         if(isset($_GET['id_user']) && !empty($_GET['id_user'])){
-            $user = users::find_by_pk($_GET['id_user']);
+            $user = model_users::find_by_pk($_GET['id_user']);
             $user->delete();
             route::set_route('admin/show_users');
         }
@@ -69,7 +69,7 @@ class admin extends controller{
     
     public function save_user(){
         if(!empty($_POST)){
-            $user =  new users();
+            $user =  new model_users();
             $user->id_user = $_POST['id_user'];
             $user->use_name = $_POST['use_name'];
             $user->use_surname = $_POST['use_surname'];

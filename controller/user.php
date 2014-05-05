@@ -28,7 +28,7 @@ class user extends controller{
     public function show_profile(){
         $this->template->set_var('title','show profile');
         $this->template->set_var('menu',view::get_content('vertical_menu.php'));
-        $user = users::find_by_login(session::get('username'));
+        $user = model_users::find_by_login(session::get('username'));
         
         $this->template->set_var('content',view::get_content('user/show_profile.php',array('user'=>$user)));
         $this->template->forge();
@@ -39,8 +39,8 @@ class user extends controller{
         $this->template->set_var('menu',view::get_content('vertical_menu.php'));
         $result = '';
         if(!empty($_POST)){
-            if(users::is_password_correct(session::get('username'), $_POST['oldpassword'])){
-                $user = users::find_by_login(session::get('username'));
+            if(model_users::is_password_correct(session::get('username'), $_POST['oldpassword'])){
+                $user = model_users::find_by_login(session::get('username'));
                 $user->use_password = sha1($_POST['newpassword']);
                 $user->save();
                 $result = 2;

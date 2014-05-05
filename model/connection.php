@@ -22,8 +22,8 @@ class model_connection {
     {
         $can_connect = false;
         
-        if(users::is_user_login_exist($password_user)){
-            if(users::is_password_correct($login_user, $password_user)){
+        if(model_users::is_user_login_exist($password_user)){
+            if(model_users::is_password_correct($login_user, $password_user)){
                 $can_connect = true;
             }
         }
@@ -35,8 +35,8 @@ class model_connection {
      * @param string $login_user
      */
     private static function create_session($login_user) {        
-        $user = users::find_by_login($login_user);
-        $right = users::get_right($user->id_user);
+        $user = model_users::find_by_login($login_user);
+        $right = model_users::get_right($user->id_user);
         
         session::set('username',$login_user);
         session::set('userright',$right);

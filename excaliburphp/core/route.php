@@ -19,6 +19,7 @@ class route {
      * get the URL and return it in array without the path of
      * the folder. The first param in the array contains the
      * command
+     * @param string $url use to not load the route write in the browser
      * @return array contains the clean route in array
      */
     private static function get_clean_route($url = '') {
@@ -39,7 +40,7 @@ class route {
 
     /**
      * Obtain the command name of the route
-     * @param array $clean_route
+     * @param string $url use to not load the route write in the browser
      * @return array
      */
     private static function get_command($url = '') {
@@ -53,6 +54,7 @@ class route {
 
     /**
      * obtain the param name of the route
+     * @param string $url use to not load the route write in the browser
      * @return array
      */
     private static function get_param_route($url = '') {
@@ -64,6 +66,7 @@ class route {
 
     /**
      * get if the route has a param
+     * @param string $url use to not load the route write in the browser
      * @return boolean
      */
     private static function is_param_in_route($url = '') {
@@ -94,6 +97,7 @@ class route {
 
         if (file_exists(CONTROLLERPATH . $name_of_controller . '.php')) {
             $is_controller_exist = true;
+            require CONTROLLERPATH . $name_of_controller . '.php';
         }
 
         return $is_controller_exist;
@@ -118,6 +122,7 @@ class route {
     /**
      * Check if the route is overwrite and if yes the framewrok go
      * to this route
+     * @param string $url use to not load the route write in the browser
      */
     private function set_overwrite_route($url = '') {
         if (self::is_command_overwrite(self::get_command($url))) {
@@ -130,6 +135,7 @@ class route {
     /**
      * Check if the route exist and if yes the framewrok go
      * to 404 route
+     * @param string $url use to not load the route write in the browser
      */
     private function set_404_route($url = '') {
         $routes_conf = excalibur::load_routes_conf();
@@ -141,6 +147,7 @@ class route {
 
     /**
      * set the default root if no route define in the URL 
+     * @param string $url use to not load the route write in the browser
      */
     private function set_root_route($url = '') {
         $routes_conf = excalibur::load_routes_conf();
@@ -156,6 +163,7 @@ class route {
 
     /**
      * This method go to the route who is write in the URL
+     * @param string $url use to not load the route write in the browser
      */
     private static function make_route($url = '') {
         $routes_conf = excalibur::load_routes_conf();
@@ -169,13 +177,13 @@ class route {
                 $controller->$param[1]();
             } else {
                 include $routes_conf[self::_404_];
-                exit();
             }
         } else {
             if (method_exists($controller,'index')){
                 $controller->index();
             }
-        }
+        }        
+        exit();
     }
     
     

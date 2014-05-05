@@ -1,2 +1,2 @@
 <?php
-echo users::create_bootrstrap_form('test/orm');
+echo "This is the page of test for the ORM content";

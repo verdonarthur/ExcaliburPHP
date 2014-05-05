@@ -17,16 +17,29 @@ class excalibur {
      * @param string $class name of the class who gonna be load
      */
     private static function autoload_path($class){
-        if(file_exists(MODULESPATH. $class . '.php'))
-            require MODULESPATH. $class . '.php';
-        else if(file_exists(COREPATH. $class . '.php'))
-            require COREPATH. $class . '.php';
-        else if(file_exists(MODELPATH. $class . '.php'))
-            require MODELPATH. $class . '.php';
-        else if(file_exists(CONTROLLERPATH. $class . '.php'))
-            require CONTROLLERPATH. $class . '.php';
+        if(file_exists(COREPATH. $class . '.php'))
+                require COREPATH. $class . '.php';
+        else{
+            self::load_subfolder_class('', $class);
+        }
     }
-    
+    /**
+     * Use to load class in subfolder with the convention "subfoldername_classname"
+     * @param string $path_to_load
+     * @param string $class_name
+     * @return boolean
+     */
+    private static function load_subfolder_class($path_to_load,$class_name){
+        $separate_char = '_';
+        $file = str_replace($separate_char, DIRECTORY_SEPARATOR, $class_name) . '.php';
+        
+        if(!file_exists($path_to_load.$file)) {
+            return false;
+        }
+        else {
+            require_once $path_to_load.$file;
+        }
+    }
     /**
      * this function init the autoloading of class
      */

@@ -16,11 +16,17 @@ class test extends controller{
     public $template = 'template_app.php';
 
     public function db() {
-        $this->orm();
+        $this->template->set_var('title', 'Exemple sur l\'DB');
+        $this->template->set_var('menu', view::get_content('vertical_menu.php'));
+        $this->template->set_var('content', view::get_content('test/db.php'));
+        $this->template->forge();
     }
 
     public function html() {
-        $this->orm();
+        $this->template->set_var('title', 'Exemple sur l\'HTML');
+        $this->template->set_var('menu', view::get_content('vertical_menu.php'));
+        $this->template->set_var('content', view::get_content('test/hmtl.php'));
+        $this->template->forge();
     }
 
     public function orm() {

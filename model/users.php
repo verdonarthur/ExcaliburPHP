@@ -11,7 +11,7 @@
  * 
  *
  */
-class users extends orm{
+class model_users extends orm{
     protected  static $table_name = 't_users';
     protected static $primary_key = 'id_user';
     protected static $properties = array(
@@ -37,7 +37,7 @@ class users extends orm{
                 ->from(self::$table_name)
                 ->where(array('use_login','=',$user_login))
                 ->execute()
-                ->fetch_obj('users');
+                ->fetch_obj('model_users');
         return $query[0];
     }
     
