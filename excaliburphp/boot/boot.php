@@ -5,7 +5,6 @@
  * 
  */
 require COREPATH . 'excalibur.php';
-
 //Execute autoload
 excalibur::init_autoload();
 

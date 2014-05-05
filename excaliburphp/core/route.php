@@ -49,6 +49,7 @@ class route {
         if (isset($clean_route[0]) && !empty($clean_route[0])) {
             $command = $clean_route[0];
         }
+        
         return $command;
     }
 
@@ -94,12 +95,12 @@ class route {
      */
     private static function is_controller_exist($name_of_controller = '') {
         $is_controller_exist = false;
-
+        
         if (file_exists(CONTROLLERPATH . $name_of_controller . '.php')) {
             $is_controller_exist = true;
             require CONTROLLERPATH . $name_of_controller . '.php';
         }
-
+        
         return $is_controller_exist;
     }
 
@@ -156,6 +157,10 @@ class route {
             $_root_ = explode('/', $routes_conf[self::_ROOT_]);
             $command = $_root_[0];
             $param = $_root_[1];
+            if(!self::is_controller_exist($command)){
+                include $routes_conf[self::_404_];
+                exit();
+            }
             self::make_route($command.'/'.$param);
             exit();
         }
