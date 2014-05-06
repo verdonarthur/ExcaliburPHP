@@ -15,7 +15,7 @@
         <?php html::include_css_file('main.css'); ?>
     </head>
     <body>
-        <header style='background-color: #428bca'>
+        <header style='background-color: #74B4FF'>
             <div style="height: 100px;">
             </div>
             <nav class="navbar navbar-default" role="navigation">
