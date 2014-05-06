@@ -98,7 +98,7 @@ class route {
         
         if (file_exists(CONTROLLERPATH . $name_of_controller . '.php')) {
             $is_controller_exist = true;
-            require CONTROLLERPATH . $name_of_controller . '.php';
+            require_once CONTROLLERPATH . $name_of_controller . '.php';
         }
         
         return $is_controller_exist;

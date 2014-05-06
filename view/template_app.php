@@ -27,21 +27,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <?php echo html::a('home/index', 'HOME', 'navbar-brand'); ?>
                     </div>
                     <div class="collapse navbar-collapse" id="menu-collapse">
                         <ul class="nav navbar-nav">
-                            <li><?php echo html::a('home/information', 'Information'); ?></li>
+                            <li></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <?php 
-                                $username = session::get('username');
-                                if(empty($username))
-                                    echo html::a('connection/connect', 'Connection'); 
-                                else
-                                    echo html::a('connection/disconnect','Deconnection');
-                                ?>
                             </li>
                         </ul>
                     </div>
