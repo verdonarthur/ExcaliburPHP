@@ -35,6 +35,11 @@ class session {
     }
     /**
      * set a session var
+     * ex:
+     * <code>
+     * //set $_SESSION['username'] = 'admin';
+     * session::set('username','admin');
+     * </code>
      * @param string $name
      * @param string/array/int/bool $value
      */
@@ -45,6 +50,11 @@ class session {
     /**
      * return the value of a session var. If this var is not set the function will
      * return false
+     * ex:
+     * <code>
+     * //return $_SESSION['admin'];
+     * session::get('admin');
+     * </code>
      * @param string $name
      * @return bool/string/array/int
      */

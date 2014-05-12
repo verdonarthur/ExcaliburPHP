@@ -8,8 +8,27 @@
  */
 
 /**
+ * light PHP ORM
  * 
- *
+ * exemple of the class user :
+ * <code>
+ * class model_users extends orm{
+ *  protected  static $table_name = 't_users';
+ *  protected static $primary_key = 'id_user';
+ *  protected static $properties = array(
+ *      'id_user'=>array(),
+ *      'use_name'=>array(),
+ *      'use_surname'=>array(),
+ *      'use_login'=>array(),
+ *      'use_password'=>array(),
+ *      'use_address'=>array(),
+ *      'use_locality'=>array(),
+ *      'use_NPA'=>array(),
+ *      'use_mail'=>array(),
+ *      'idx_right'=>array()
+ *  );    
+ * }
+ * </code>
  */
 abstract class orm {
 
@@ -31,7 +50,12 @@ abstract class orm {
         return $query->execute()->fetch_obj(get_called_class());
     }
     /**
-     * search a record and return it by his ID
+     * search a record and return it by his ID.
+     * ex: 
+     * <code>
+     * // this will return the user with the id one
+     * $user = users::find_by_pk(1);
+     * </code>
      * @param int $id
      * @return object
      */
@@ -44,6 +68,13 @@ abstract class orm {
     }
     /**
      * delete the current object in the DB
+     * ex: 
+     * <code>
+     * // this will return the user with the id one
+     * $user = users::find_by_pk(1);
+     * //this will delete the user with the id one in the DB
+     * $user->delete();
+     * </code>
      * @return type
      */
     public function delete() {
@@ -61,6 +92,12 @@ abstract class orm {
     /**
      * save the actual object in the the DB. If he doesn't exist a new record will
      * be create
+     * ex:
+     * <code>
+     * $user = new model_users();
+     * $user->use_name = 'user';
+     * $user->save();
+     * </code>
      */
     public function save() {
         $db = new db();
@@ -86,7 +123,8 @@ abstract class orm {
     }
     /**
      * this function allow to create a bootstrap form trough an orm model
-    * @param string $action
+     * ATTENTION THIS FUNCTION IS IN DEVELLOPMENT AND NOT WORK ACTUALLY
+     * @param string $action
      * @param array $option
      * @return string
      */

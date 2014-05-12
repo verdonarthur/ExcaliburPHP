@@ -16,6 +16,14 @@ class view {
     /**
      * return the content of a file. Use this function for just have the content
      * of the file set in param without display it
+     * ex :
+     * <code>
+     * //return the content of the file 'vertical_menu.php
+     * view::get_content('vertical_menu.php');
+     * 
+     * // return the content of the file show_profile.php with the var '$user'
+     * view::get_content('user/show_profile.php',array('user'=>$user));
+     * </code>
      * @param string $view_file
      * @param array $view_var
      * @return boolean
