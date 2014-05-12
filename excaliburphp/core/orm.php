@@ -51,6 +51,7 @@ abstract class orm {
     }
     /**
      * search a record and return it by his ID.
+     * 
      * ex: 
      * <code>
      * // this will return the user with the id one
@@ -68,6 +69,7 @@ abstract class orm {
     }
     /**
      * delete the current object in the DB
+     * 
      * ex: 
      * <code>
      * // this will return the user with the id one
@@ -92,6 +94,7 @@ abstract class orm {
     /**
      * save the actual object in the the DB. If he doesn't exist a new record will
      * be create
+     * 
      * ex:
      * <code>
      * $user = new model_users();

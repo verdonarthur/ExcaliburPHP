@@ -63,6 +63,7 @@ class db {
 
     /**
      * Create a select request
+     * 
      * Example :
      * <code>
      * $db =  new db;
@@ -95,6 +96,7 @@ class db {
 
     /**
      * create an update request
+     * 
      * Example :
      * <code>
      * $db =  new db;
@@ -125,6 +127,7 @@ class db {
 
     /**
      * create an insert request
+     * 
      * Example :
      * <code>
      * $db =  new db;
@@ -155,6 +158,7 @@ class db {
 
     /**
      * begin a delete query
+     * 
      * Example :
      * <code>
      * $db =  new db;
@@ -248,6 +252,7 @@ class db {
     /**
      * fetch your result in an associative array 
      * Example :
+     * 
      * <code>
      * array( 
      * 	'0'=> array( "id_category"=> "1" ,"cat_name"=> "Apple"),
@@ -269,6 +274,7 @@ class db {
     /**
      * fetch your result in a numeric array
      * Example :
+     * 
      * <code>
      * array (
      * 	'0'=> array('0'=>"1",'1'=>"Apple" ), 
@@ -290,6 +296,7 @@ class db {
     /**
      * fetch your result as object in an array
      * Example : 
+     * 
      * <code>
      * $db = new db();
      * $tab_category = $db->select()->from('t_category')->execute()->fetch_obj();
